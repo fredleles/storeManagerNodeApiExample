@@ -13,7 +13,17 @@ const getById = async (id) => {
   return data[0];
 };
 
+const queryByTitle = async (q) => {
+  if (!q || q === '') return getAll();
+
+  const title = q.toUpperCase();
+  const [[data]] = await productsModel.dbQueryByTitle(title);
+  if (!data[0]) return getAll();
+  return data;
+};
+
 module.exports = {
   getAll,
   getById,
+  queryByTitle,
 };

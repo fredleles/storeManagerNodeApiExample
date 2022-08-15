@@ -10,9 +10,9 @@ TRUNCATE TABLE `stock`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO StoreManagerExample.products (title, sale_price) VALUES
-    ("Produto 1", 120.50),
-    ("Produto 2", 49.99),
-    ("Produto 3", 99);
+    ("CAMISA M OFICIAL SELEÇÃO", 120.50),
+    ("PACK CERVEJA LATA 6 UN", 49.99),
+    ("LIVRO BRASIL EM BUSCA DO HEXA", 99);
 
 INSERT INTO StoreManagerExample.sales (date, payment_type, total) VALUES
     (NOW(), "CARTÃO", 241),

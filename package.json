@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "migration": "node -e \"require('./__tests__/_utils').runMigration()\"",
-    "seed": "node -e \"require('./__tests__/_utils').runSeed()\""
+    "seed": "node -e \"require('./__tests__/_utils').runSeed()\"",
+    "publish": "node -e \"require('./__tests__/_utils').runPublish()\""
   },
   "repository": {
     "type": "git",

@@ -43,4 +43,44 @@ describe('Unit tests for ProductsServices:', () => {
       expect(response.id).to.be.equal(id);
     });
   });
+
+  describe('Search by Title service:', () => {
+    let mockDB = [['product1', 'product2']];
+    sinon.stub(productsModel, 'dbGetAll');
+    sinon.stub(productsModel, 'dbQueryByTitle');
+
+    after(() => {
+      productsModel.dbGetAll.restore();
+      productsModel.dbQueryByTitle.restore();
+    });
+
+    it('the parameter \'q\' is undefined', async () => {
+      const q = undefined;
+      productsModel.dbGetAll.resolves(mockDB);
+
+      const response = await productsServices.queryByTitle(q);
+      expect(response).to.be.a.lengthOf(2);
+      expect(response[0]).to.be.eq('product1');
+    });
+
+    it('The search parameter does not hit any results', async () => {
+      const q = 'test';
+      productsModel.dbGetAll.resolves(mockDB);
+      productsModel.dbQueryByTitle.resolves([[[]]]);
+
+      const response = await productsServices.queryByTitle(q);
+      expect(response).to.be.a.lengthOf(2);
+      expect(response[0]).to.be.eq('product1');
+    });
+
+    it('The search parameter hit a result', async () => {
+      const q = 'test';
+      productsModel.dbQueryByTitle.resolves([[[{ title: 'product1' }]]]);
+
+      const response = await productsServices.queryByTitle(q);
+      expect(response).to.be.a.lengthOf(1);
+      expect(response[0]).to.have.all.keys('title');
+      expect(response[0].title).to.be.eq('product1');
+    });
+  });
 });

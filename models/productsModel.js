@@ -16,7 +16,19 @@ const dbGetById = (id) => (
   )
 );
 
+const dbQueryByTitle = (title) => (
+  connection.query(
+    'CALL sp_filter_product_by_id(?)',
+    [title],
+    (error, results) => {
+      if (error) throw new Error(error.message);
+      return results;
+    }
+  )
+);
+
 module.exports = {
   dbGetAll,
   dbGetById,
+  dbQueryByTitle,
 }
