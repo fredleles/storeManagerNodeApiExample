@@ -1,6 +1,6 @@
 const connection = require('./dbConfig');
 
-const dbGetAll = async () => (
+const dbGetAll = () => (
   connection.execute(
     `SELECT id, title, sale_price
     FROM StoreManagerExample.products
@@ -8,6 +8,15 @@ const dbGetAll = async () => (
   )
 );
 
+const dbGetById = (id) => (
+  connection.execute(
+    `SELECT id, title, sale_price
+    FROM StoreManagerExample.products
+    WHERE id=?`, [id]
+  )
+);
+
 module.exports = {
   dbGetAll,
+  dbGetById,
 }

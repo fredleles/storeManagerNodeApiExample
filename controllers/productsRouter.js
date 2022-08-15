@@ -11,4 +11,11 @@ router.get('/', rescue(async (_req, res) => {
   res.status(200).json(products);
 }));
 
+router.get('/:id', rescue(async (req, res, next) => {
+  const { id } = req.params;
+  const response = await productsServices.getById(id);
+  if (response.message) return next(response);
+  res.status(200).json(response);
+}));
+
 module.exports = router;
