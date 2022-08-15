@@ -7,7 +7,8 @@ USE StoreManagerExample;
 CREATE TABLE products (
   id INT NOT NULL auto_increment,
   title VARCHAR(30) NOT NULL,
-  sale_price MONEY NOT NULL,
+  sale_price DECIMAL(6, 2) NOT NULL,
+  active_flag BIT NOT NULL DEFAULT 1,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
@@ -15,7 +16,7 @@ CREATE TABLE sales (
   id INT NOT NULL auto_increment,
   date DATETIME DEFAULT CURRENT_TIMESTAMP,
   payment_type VARCHAR(30) NOT NULL,
-  total MONEY NOT NULL,
+  total DECIMAL(6, 2) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
@@ -35,9 +36,10 @@ CREATE TABLE stock (
   product_id INT NOT NULL,
   quantity INT NOT NULL,
   date DATETIME DEFAULT CURRENT_TIMESTAMP,
-  purchase_un_cost MONEY NOT NULL,
+  un_cost DECIMAL(6, 2) NOT NULL,
   FOREIGN KEY (product_id)
-    REFERENCES products (id)
+    REFERENCES products (id),    
+  PRIMARY KEY(id)
 )  ENGINE=INNODB;
 
 SET SQL_SAFE_UPDATES = 0;
