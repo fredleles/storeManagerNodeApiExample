@@ -1,5 +1,6 @@
 const express = require('express');
 const rescue = require('../helpers/rescue');
+const validate = require('../middlewares/validateProducts');
 
 const productsServices = require('../services/productsServices');
 
@@ -25,16 +26,15 @@ router.get('/:id', rescue(async (req, res, next) => {
 }));
 
 // TODO - Create an Auth middleware
-// TODO - Create a middleware to validate the inputs before create and update
 
-router.post('/', rescue(async (req, res) => {
+router.post('/', validate, rescue(async (req, res) => {
   const { title, sale_price, active_flag = 1 } = req.body;
 
   const response = await productsServices.create(title, sale_price, active_flag);
   res.status(201).json(response);
 }));
 
-router.put('/:id', rescue(async (req, res, next) => {
+router.put('/:id', validate, rescue(async (req, res, next) => {
   const { title, sale_price, active_flag } = req.body;
   const { id } = req.params;
   
