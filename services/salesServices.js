@@ -34,7 +34,7 @@ const calculateTotal = (arrTotals) => {
 
 const verifyProducts = (products) => (
   new Promise((resolve, reject) => {
-    // Create a new promise for each product inside the array 'sales'
+    // Create a new promise for each product inside the array 'products'
 
     const productsPromises = products.map(({ product_id, quantity }) => (
       new Promise((iRes, iRej) => {
@@ -76,7 +76,7 @@ const create = async (sales) => {
 };
 
 const update = async (id, sale) => {
-  
+  // TODO
 };
 
 module.exports = {

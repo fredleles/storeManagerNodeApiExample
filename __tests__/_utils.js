@@ -11,16 +11,28 @@ const connect = () => mysql.createPool({
   multipleStatements: true
 });
 
-const runSql = (file) => async () => {
+const runSql = (files) => async () => {
   const db = connect();
-  const sql = fs.readFileSync(file, 'utf8');
-  await db.query(sql);
-  await db.end();
+
+  for(let i = 0; i < files.length; i += 1) {
+    const sql = fs.readFileSync(files[i], 'utf8');
+    await db.query(sql);
+  }
+
+  db.end();
 };
 
-const runMigration = runSql(path.resolve(cwd(), '__tests__', 'migration.sql'));
-const runSeed = runSql(path.resolve(cwd(), '__tests__', 'seed.sql'));
-const runPublish = runSql(path.resolve(cwd(), '__tests__', 'storedProcedures.sql'));
+const readStoredProcedures = (dirPath) => {
+  const files = fs.readdirSync(dirPath);
+  return files.map((file) => path.resolve(dirPath, file));
+};
+
+const runMigration = runSql([path.resolve(cwd(), '__tests__', 'migration.sql')]);
+const runSeed = runSql([path.resolve(cwd(), '__tests__', 'seed.sql')]);
+const runPublish = runSql([
+  path.resolve(cwd(), '__tests__', 'migration.sql'),
+  ...readStoredProcedures(path.resolve(cwd(), '__tests__', 'storedProcedures')),
+]);
 
 module.exports = {
   connect,
