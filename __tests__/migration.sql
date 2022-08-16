@@ -31,7 +31,7 @@ CREATE TABLE sales_products (
     REFERENCES products (id)
 )  ENGINE=INNODB;
 
-CREATE TABLE stock (
+CREATE TABLE purchases (
   id INT NOT NULL auto_increment,
   product_id INT NOT NULL,
   quantity INT NOT NULL,

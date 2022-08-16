@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha tests/unit/**/*.js --exit",
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon node index.js",
     "migration": "node -e \"require('./__tests__/_utils').runMigration()\"",
     "seed": "node -e \"require('./__tests__/_utils').runSeed()\"",
     "publish": "node -e \"require('./__tests__/_utils').runPublish()\""

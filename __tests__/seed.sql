@@ -5,7 +5,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE `products`;
 TRUNCATE TABLE `sales`;
 TRUNCATE TABLE `sales_products`;
-TRUNCATE TABLE `stock`;
+TRUNCATE TABLE `purchases`;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -25,7 +25,7 @@ INSERT INTO StoreManagerExample.sales_products (sale_id, product_id, quantity) V
     (3, 2, 1),
     (3, 3, 1);
 
-INSERT INTO StoreManagerExample.stock (product_id, quantity, date, un_cost) VALUES
+INSERT INTO StoreManagerExample.purchases (product_id, quantity, date, un_cost) VALUES
     (1, 10, NOW(), 99),
     (2, 15, NOW(), 35.90),
     (3, 50, NOW(), 78.50);

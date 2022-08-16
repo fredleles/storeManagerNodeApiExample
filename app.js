@@ -1,7 +1,7 @@
 const express = require('express');
 const productsRouter = require('./controllers/productsRouter');
 const salesRouter = require('./controllers/salesRouter');
-const stockRouter = require('./controllers/stockRouter');
+const purchasesRouter = require('./controllers/purchasesRouter');
 
 const app = express();
 app.use(express.json());
@@ -12,7 +12,7 @@ app.get('/', (_req, res) => {
 
 app.use('/products', productsRouter);
 // app.use('/sales', salesRouter);
-// app.use('/stock', stockRouter);
+app.use('/purchases', purchasesRouter);
 
 app.all('*', (_req, _res, next) => {
   next({ code: 404, message: 'Bad request' });
