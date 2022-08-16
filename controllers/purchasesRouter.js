@@ -18,9 +18,9 @@ router.get('/:id', rescue(async (req, res, next) => {
 }));
 
 router.post('/', rescue(async (req, res) => {
-  const { product_id, quantity, un_cost, date = Date.now() } = req.body;
+  const { product_id, quantity, un_cost } = req.body;
 
-  const response = await purchaseServices.create(product_id, quantity, un_cost, date);
+  const response = await purchaseServices.create(product_id, quantity, un_cost);
   res.status(201).json(response);
 }));
 

@@ -13,8 +13,8 @@ const getById = async (id) => {
   return data[0];
 };
 
-const create = async (product_id, quantity, un_cost, date) => {
-  const [[data]] = await purchaseModel.dbCreate(product_id, quantity, un_cost, date);
+const create = async (product_id, quantity, un_cost) => {
+  const [[data]] = await purchaseModel.dbCreate(product_id, quantity, un_cost);
   return data[0];
 };
 

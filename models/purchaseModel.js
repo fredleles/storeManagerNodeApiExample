@@ -16,7 +16,7 @@ const dbGetById = (id) => (
   )
 );
 
-const dbCreate = (product_id, quantity, un_cost, date) => (
+const dbCreate = (product_id, quantity, un_cost) => (
   connection.query(
     'CALL sp_create_purchase(?,?,?)',
     [product_id, quantity, un_cost]

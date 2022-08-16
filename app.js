@@ -11,7 +11,7 @@ app.get('/', (_req, res) => {
 });
 
 app.use('/products', productsRouter);
-// app.use('/sales', salesRouter);
+app.use('/sales', salesRouter);
 app.use('/purchases', purchasesRouter);
 
 app.all('*', (_req, _res, next) => {
