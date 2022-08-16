@@ -8,7 +8,7 @@ CREATE TABLE products (
   id INT NOT NULL auto_increment,
   title VARCHAR(30) NOT NULL,
   sale_price DECIMAL(6, 2) NOT NULL,
-  active_flag BIT NOT NULL DEFAULT 1,
+  active_flag TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
