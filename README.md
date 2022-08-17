@@ -83,7 +83,7 @@ API restful básica com CRUD no MySql. Fornece rotas para simular o gerenciament
       {
         "title": "Produto",
         "sale_price": 99.90,
-        "active_flag": 1  // [OPCIONAL] Aceita 1 OU 0 com valores; DEFAULT 1
+        "active_flag": 1  // [OPCIONAL] Aceita 1 OU 0 como valores; DEFAULT 1
       }
     ```
 </details>
