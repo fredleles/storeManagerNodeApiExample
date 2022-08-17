@@ -13,6 +13,7 @@ API restful básica com CRUD no MySql. Fornece rotas para simular o gerenciament
 
 ## Próximos passos
 
+- Adicionar transactions para as rotas que modificam mais de uma tabela no BD
 - Criar as validações de dados de entrada do usuário para as rotas: /sales e /purchases
 - Criar uma rota para visualizar os produtos em estoque e o faturamento com as vendas
 - Desenvolver rotas autenticadas através de JWT
