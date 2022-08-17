@@ -17,22 +17,6 @@ router.get('/:id', rescue(async (req, res, next) => {
   res.status(200).json(response);
 }));
 
-  /*
-  {
-    "payment_type": "DINHEIRO",
-    "products":	[
-      {
-        "product_id": 1,
-        "quantity": 1
-      },
-      {
-        "product_id": 2,
-        "quantity": 2
-      }
-    ]
-  }
-  */
-
 router.post('/', rescue(async (req, res) => {
   const sale = req.body;
 
